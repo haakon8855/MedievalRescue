@@ -10,10 +10,17 @@ class User_input():
 		for event in self.pygame.event.get():
 			if event.type == self.pygame.QUIT:
 				app.running = False
+
 			# the following runs if a key is pressed
 			if event.type == self.pygame.KEYDOWN:
 				if event.key == self.pygame.K_LSHIFT:
 					player.sprint = True
+				if self.pygame.key.get_mods() & self.pygame.KMOD_CAPS != 0:
+					player.sprint = True
+				else:
+					player.sprint = False
+
+			# the following runs if a key is released
 			if event.type == self.pygame.KEYUP:
 				if event.key == self.pygame.K_LSHIFT:
 					player.sprint = False
