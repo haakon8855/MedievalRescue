@@ -1,4 +1,5 @@
 import pygame
+from pygame.locals import *
 from lib.user_input import *
 from lib.player import *
 from lib.renderer import *
@@ -7,7 +8,6 @@ color = {
 	"black": (0,0,0),
 	"white": (255, 255, 255)
 }
-
 
 
 class App():
@@ -26,7 +26,6 @@ class App():
 		self.icon_surf = pygame.image.load("data/textures/logo.png")
 		# self.icon_surf.convert()
 		pygame.display.set_icon(self.icon_surf)
-
 		# temporary font
 		self.font = pygame.font.SysFont("lucidaconsole", 16, True)
 
@@ -56,5 +55,5 @@ if __name__ == "__main__":
 	theApp = App(color)
 	inputter = User_input(pygame)
 	thePlayer = Player()
-	theRenderer = Renderer(pygame)
+	theRenderer = Renderer(theApp, pygame)
 	theApp.on_execute()
