@@ -4,6 +4,9 @@ from lib.user_input import *
 from lib.player import *
 from lib.renderer import *
 
+# husk å fjerne:
+#	* player.obst_save
+
 color = {
 	"black": (0,0,0),
 	"white": (255, 255, 255)

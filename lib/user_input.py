@@ -17,6 +17,12 @@ class User_input():
 					player.sprint = True
 				else:
 					player.sprint = False
+				if event.key == self.pygame.K_s:
+					player.obst_creator(0)
+				if event.key == self.pygame.K_p:
+					player.obst_creator(1)
+				if event.key == self.pygame.K_r:
+					player.obst_creator(2)
 			# the following runs if a key is released
 			if event.type == self.pygame.KEYUP:
 				pass

@@ -1,4 +1,5 @@
 import json
+from math import floor
 
 
 class Renderer():
@@ -32,13 +33,21 @@ class Renderer():
 
 		if self.show_fps:
 			fps = app.clock.get_fps()
+			fps = floor(fps+1) # rounds to the nearest int
+			fps_pos = (5, 5)
 			fps_surf = app.font.render(str(fps), False, app.color["white"])
-			app.display_surf.blit(fps_surf, (5, 5))
+			fps_surf_rect = (
+				fps_pos[0], fps_pos[1],
+				fps_surf.get_width(), fps_surf.get_height()
+			)
+			app.display_surf.blit(fps_surf, fps_pos)
 
-		update_rect = (
+		update_rect = [(
 			player.xpos*app.tile, player.ypos*app.tile,
 			app.tile, app.tile
-		)
+		)]
+		update_rect.append(fps_surf_rect)
+
 		self.pygame.display.update(update_rect)
 
 		app.need_new_map = False
